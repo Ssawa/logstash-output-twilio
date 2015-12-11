@@ -27,7 +27,7 @@ class LogStash::Outputs::Twilio < LogStash::Outputs::Base
 
     recipients = event.sprintf(@to).split(',')
 
-    url = "https://https://#{@sid}:#{@secret}@api.twilio.com/2010-04-01/Accounts/#{@accountId}/Messages"
+    url = "https://#{@sid}:#{@secret}@api.twilio.com/2010-04-01/Accounts/#{@accountId}/Messages"
 
    	recipients.each do |recipient|
 
@@ -44,7 +44,7 @@ class LogStash::Outputs::Twilio < LogStash::Outputs::Base
 	        :accept => "application/xml",
 	        :'User-Agent' => "logstash-output-twilio",
 	        :content_type => "application/x-www-form-urlencoded") { |response, request, result, &block|
-	          if response.code != 200
+	          if response.code != 201
 	            @logger.warn("Got a #{response.code} response: #{response}")
 	          end
 	        }
